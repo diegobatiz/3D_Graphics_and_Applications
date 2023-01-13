@@ -171,10 +171,13 @@
     <None Include="xconfig.json" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="CmdBeginDraw.cpp" />
     <ClCompile Include="CmdDrawPixel.cpp" />
+    <ClCompile Include="CmdEndDraw.cpp" />
     <ClCompile Include="CmdSetColor.cpp" />
     <ClCompile Include="CmdSetResolution.cpp" />
     <ClCompile Include="CmdVarFloat.cpp" />
+    <ClCompile Include="CmdVertex.cpp" />
     <ClCompile Include="CommandDictionary.cpp" />
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="Math\MathHelper.cpp" />
@@ -193,10 +196,13 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CmdBeginDraw.h" />
     <ClInclude Include="CmdDrawPixel.h" />
+    <ClInclude Include="CmdEndDraw.h" />
     <ClInclude Include="CmdSetColor.h" />
     <ClInclude Include="CmdSetResolution.h" />
     <ClInclude Include="CmdVarFloat.h" />
+    <ClInclude Include="CmdVertex.h" />
     <ClInclude Include="Command.h" />
     <ClInclude Include="CommandDictionary.h" />
     <ClInclude Include="Graphics.h" />
