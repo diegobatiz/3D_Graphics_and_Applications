@@ -33,12 +33,12 @@ Vector3 MathHelper::Normalize(const Vector3& v)
 //sdsds
 float MathHelper::Dot(const Vector2& a, const Vector2& b)
 {
-	return a.x * b.x + a.y * b.y;
+	return (a.x * b.x) + (a.y * b.y);
 }
 
 float MathHelper::Dot(const Vector3& a, const Vector3& b)
 {
-	return a.x * b.x + a.y * b.y + a.z * b.z;
+	return (a.x * b.x) + (a.y * b.y) + (a.z * b.z);
 }
 
 Vector3 MathHelper::Cross(const Vector3& a, const Vector3& b)

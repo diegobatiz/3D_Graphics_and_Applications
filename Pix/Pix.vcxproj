@@ -179,6 +179,7 @@
     <ClCompile Include="Graphics.cpp" />
     <ClCompile Include="Math\MathHelper.cpp" />
     <ClCompile Include="PixEditor.cpp" />
+    <ClCompile Include="PrimitivesManager.cpp" />
     <ClCompile Include="Rasterizer.cpp" />
     <ClCompile Include="ScriptParser.cpp" />
     <ClCompile Include="TextEditor.cpp" />
@@ -202,7 +203,9 @@
     <ClInclude Include="Math\MathHelper.h" />
     <ClInclude Include="Math\Vector2.h" />
     <ClInclude Include="Math\Vector3.h" />
+    <ClInclude Include="Math\Vertex.h" />
     <ClInclude Include="PixEditor.h" />
+    <ClInclude Include="PrimitivesManager.h" />
     <ClInclude Include="Rasterizer.h" />
     <ClInclude Include="ScriptParser.h" />
     <ClInclude Include="TextEditor.h" />
