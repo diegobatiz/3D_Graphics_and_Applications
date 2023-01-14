@@ -29,28 +29,68 @@ void Rasterizer::DrawPoint(const Vertex& vertex)
 
 void Rasterizer::DrawLine(const Vertex& a, const Vertex& b)
 {
-	int dx = b.pos.x - a.pos.x;
-	int dy = b.pos.y - a.pos.y;
-	int D = 2 * dy - dx;
-	int y = a.pos.y;
-
-	float t = 0.0f;
-	Vertex vertex;
-	
-	for (int x = a.pos.x; x < b.pos.x; ++x)
+	float dx = b.pos.x - a.pos.x;
+	float dy = b.pos.y - a.pos.y;
+	if (abs(dx) <= 0.01f)
 	{
-		t = (static_cast<float>(x) - a.pos.x) / (b.pos.x - a.pos.x);
-		vertex.color = LerpColor(a.color, b.color, t);
-		vertex.pos.x = x;
-		vertex.pos.y = y;
-
-		DrawPoint(vertex);
-		if (D > 0)
+		if (a.pos.y < b.pos.y)
 		{
-			++y;
-			D = D - 2 * dx;
+			DrawLineHigh(a, b);
 		}
-		D = D + 2 * dy;
+		else
+		{
+			DrawLineHigh(b, a);
+		}
+	}
+	else
+	{
+		float m = dy / dx;
+		if (abs(m) < 1)
+		{
+			if (a.pos.x < b.pos.x)
+			{
+				DrawLineLow(a, b);
+			}
+			else
+			{
+				DrawLineLow(b, a);
+			}
+		}
+		else
+		{
+			if (a.pos.y < b.pos.y)
+			{
+				DrawLineHigh(a, b);
+			}
+			else
+			{
+				DrawLineHigh(b, a);
+			}
+		}
+	}
+}
+
+void DrawLineLow(const Vertex& left, const Vertex& right)
+{
+	float dx = right.pos.x - left.pos.x;
+	float startX = static_cast<int>(left.pos.x);
+	int endX = static_cast<int>(right.pos.x);
+	for (int x = startX; x < endX; ++x)
+	{
+		float t = static_cast<float>(x - startX) / dx;
+		Rasterizer::Get()->DrawPoint(LerpVertex(left, right, t));
+	}
+}
+
+void DrawLineHigh(const Vertex& bottom, const Vertex& top)
+{
+	float dy = top.pos.y - bottom.pos.y;
+	float startY = static_cast<int>(bottom.pos.y);
+	int endY = static_cast<int>(top.pos.y);
+	for (int y = startY; y < endY; ++y)
+	{
+		float t = static_cast<float>(y - startY) / dy;
+		Rasterizer::Get()->DrawPoint(LerpVertex(bottom, top, t));
 	}
 }
 
