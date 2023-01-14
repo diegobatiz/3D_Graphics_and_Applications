@@ -4,9 +4,10 @@
 
 class CmdEndDraw : public Command
 {
+public:
 	const char* GetName()
 	{
-		return "End Draw";
+		return "EndDraw";
 	}
 	const char* GetDescription()
 	{

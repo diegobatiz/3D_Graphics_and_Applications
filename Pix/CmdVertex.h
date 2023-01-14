@@ -4,6 +4,7 @@
 
 class CmdVertex : public Command
 {
+public:
 	const char* GetName()
 	{
 		return "Vertex";

@@ -4,9 +4,10 @@
 
 class CmdBeginDraw : public Command
 {
+public:
 	const char* GetName()
 	{
-		return "Begin Draw";
+		return "BeginDraw";
 	}
 	const char* GetDescription()
 	{

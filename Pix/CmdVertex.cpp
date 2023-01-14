@@ -10,13 +10,13 @@ bool CmdVertex::Execute(const std::vector<std::string>& params)
 		v.pos.x = stof(params[0]);
 		v.pos.y = stof(params[1]);
 	}
-	if (params.size() == 3) //x, y, z
+	else if (params.size() == 3) //x, y, z
 	{
 		v.pos.x = stof(params[0]);
 		v.pos.y = stof(params[1]);
 		v.pos.z = stof(params[2]);
 	}
-	if (params.size() == 5) //x, y, r, g, b
+	else if (params.size() == 5) //x, y, r, g, b
 	{
 		v.pos.x = stof(params[0]);
 		v.pos.y = stof(params[1]);
@@ -24,7 +24,7 @@ bool CmdVertex::Execute(const std::vector<std::string>& params)
 		v.color.g = stof(params[3]);
 		v.color.b = stof(params[4]);
 	}
-	if (params.size() == 6) //x, y, z, r, g, b
+	else if (params.size() == 6) //x, y, z, r, g, b
 	{
 		v.pos.x = stof(params[0]);
 		v.pos.y = stof(params[1]);
