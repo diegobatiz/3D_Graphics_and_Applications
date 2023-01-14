@@ -96,4 +96,19 @@ void DrawLineHigh(const Vertex& bottom, const Vertex& top)
 
 void Rasterizer::DrawTriangle(const Vertex& a, const Vertex& b, const Vertex& c)
 {
+	switch (mFillMode)
+	{
+	case FillMode::Solid:
+	{
+
+	}
+	break;
+	case FillMode::WireFrame:
+	{
+		DrawLine(a, b);
+		DrawLine(b, c);
+		DrawLine(c, a);
+	}
+	break;
+	}
 }

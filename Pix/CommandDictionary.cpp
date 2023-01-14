@@ -7,6 +7,7 @@
 #include "CmdBeginDraw.h"  
 #include "CmdEndDraw.h"
 #include "CmdVertex.h"
+#include "CmdSetFillMode.h"
 
 CommandDictionary* CommandDictionary::Get()
 {
@@ -27,6 +28,7 @@ CommandDictionary::CommandDictionary()
 	// Rasterization commands
 	RegisterCommand<CmdDrawPixel>();
 	RegisterCommand<CmdSetColor>();
+	RegisterCommand<CmdSetFillMode>();
 
 	//Primitive Commands
 	RegisterCommand<CmdBeginDraw>();
