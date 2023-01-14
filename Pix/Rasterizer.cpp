@@ -100,7 +100,11 @@ void Rasterizer::DrawTriangle(const Vertex& a, const Vertex& b, const Vertex& c)
 	{
 	case FillMode::Solid:
 	{
-
+		std::vector<Vertex> sortedVertices;
+		sortedVertices.push_back(a);
+		sortedVertices.push_back(b);
+		sortedVertices.push_back(c);
+		std::sort(sortedVertices.begin(), sortedVertices.end(), [](const Vertex& lhs, const Vertex& rhs) {return lhs.pos.y < rhs.pos.y; });
 	}
 	break;
 	case FillMode::WireFrame:
@@ -111,4 +115,9 @@ void Rasterizer::DrawTriangle(const Vertex& a, const Vertex& b, const Vertex& c)
 	}
 	break;
 	}
+}
+
+void DrawFilledTriangle(const Vertex& v0, const Vertex& v1, const Vertex& v2)
+{
+	
 }
