@@ -26,7 +26,10 @@ inline X::Color LerpColor(const X::Color& a, const X::Color& b, float t)
 	);
 }
 
-inline LerpVertex(const Vertex& a, const Vertex& b, float t)
+inline Vertex LerpVertex(const Vertex& a, const Vertex& b, float t)
 {
-	
+	Vertex ret;
+	ret.pos = LerpPosition(a.pos, b.pos, t);
+	ret.color = LerpColor(a.color, b.color, t);
+	return ret;
 }
