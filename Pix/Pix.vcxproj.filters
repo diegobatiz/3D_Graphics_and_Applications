@@ -120,6 +120,9 @@
     <ClCompile Include="CmdSetFillMode.cpp">
       <Filter>Commands</Filter>
     </ClCompile>
+    <ClCompile Include="Clipper.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TextEditor.h">
@@ -187,6 +190,9 @@
     </ClInclude>
     <ClInclude Include="CmdSetFillMode.h">
       <Filter>Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="Clipper.h">
+      <Filter>Graphics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
