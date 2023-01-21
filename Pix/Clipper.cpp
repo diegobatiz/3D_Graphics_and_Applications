@@ -66,7 +66,24 @@ short GetOuputCode(float x, float y)
 {
 	short code = BIT_INSIDE;
 
-	
+	if (x < Viewport::Get()->GetMinX())
+	{
+		code |= BIT_LEFT;
+	}
+	else if (x > Viewport::Get()->GetMaxX())
+	{
+		code |= BIT_RIGHT;
+	}
+	if (y < Viewport::Get()->GetMinY())
+	{
+		code |= BIT_TOP;
+	}
+	else if (y > Viewport::Get()->GetMaxY())
+	{
+		code |= BIT_BOTTOM;
+	}
+
+	return code;
 }
 
 Clipper* Clipper::Get()
@@ -139,11 +156,11 @@ bool Clipper::ClipLine(Vertex& v0, Vertex& v1)
 			}
 			else if (outCodeOut & BIT_LEFT)
 			{
-				t = (minY - v0.pos.x) / (v1.pos.x - v0.pos.x);
+				t = (minX - v0.pos.x) / (v1.pos.x - v0.pos.x);
 			}
 			else if (outCodeOut & BIT_RIGHT)
 			{
-				t = (minY - v0.pos.x) / (v1.pos.x - v0.pos.x);
+				t = (maxX - v0.pos.x) / (v1.pos.x - v0.pos.x);
 			}
 
 			if (outCodeOut == codeV0)
