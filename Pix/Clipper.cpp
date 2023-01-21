@@ -29,7 +29,7 @@ bool IsInFront(ClipEdge edge, const Vector3& pos)
 
 	return false;
 }
-/*
+
 Vertex ComputeIntersection(ClipEdge edge, const Vertex& nVertex, const Vertex& np1Vertex)
 {
 	float t = 0.0f;
@@ -59,9 +59,10 @@ Vertex ComputeIntersection(ClipEdge edge, const Vertex& nVertex, const Vertex& n
 	default: 
 		break;
 	}
-	return false;
+
+	return LerpVertex(nVertex, np1Vertex, t);
 }
-*/
+
 
 short GetOuputCode(float x, float y)
 {
@@ -191,11 +192,11 @@ bool Clipper::ClipTriangle(std::vector<Vertex>& vertices)
 	{
 		newVertices.clear();
 		ClipEdge edge = (ClipEdge)i;
-		for (size_t n = 0; n < vertices.size(); n++)
+		for (size_t n = 0; n < vertices.size(); ++n)
 		{
 			size_t np1 = (n + 1) % vertices.size();
 			const Vertex& nVertex = vertices[n];
-			const Vertex np1Vertex = vertices[np1];
+			const Vertex& np1Vertex = vertices[np1];
 
 			bool nIsInFront = IsInFront(edge, nVertex.pos);
 			bool np1IsInFront = IsInFront(edge, np1Vertex.pos);
@@ -206,17 +207,20 @@ bool Clipper::ClipTriangle(std::vector<Vertex>& vertices)
 			}
 			else if (nIsInFront && !np1IsInFront)
 			{
-
-			}
-			else if (!nIsInFront && np1IsInFront)
-			{
-
+				newVertices.push_back(ComputeIntersection(edge, nVertex, np1Vertex));
 			}
 			else if (!nIsInFront && !np1IsInFront)
 			{
 
 			}
+			else if (!nIsInFront && np1IsInFront)
+			{
+				newVertices.push_back(ComputeIntersection(edge, nVertex, np1Vertex));
+				newVertices.push_back(np1Vertex);
+			}
 		}
+		vertices = newVertices;
 	}
 
+	return newVertices.empty();
 }
