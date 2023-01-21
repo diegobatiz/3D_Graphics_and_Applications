@@ -29,7 +29,7 @@ bool IsInFront(ClipEdge edge, const Vector3& pos)
 
 	return false;
 }
-
+/*
 Vertex ComputeIntersection(ClipEdge edge, const Vertex& nVertex, const Vertex& np1Vertex)
 {
 	float t = 0.0f;
@@ -59,8 +59,9 @@ Vertex ComputeIntersection(ClipEdge edge, const Vertex& nVertex, const Vertex& n
 	default: 
 		break;
 	}
+	return false;
 }
-
+*/
 
 short GetOuputCode(float x, float y)
 {

@@ -1,8 +1,8 @@
-#include "CmdShowViewport.h"
+#include "CmdSetViewport.h"
 
 #include "Viewport.h"
 
-bool CmdShowViewport::Execute(const std::vector<std::string>& params)
+bool CmdSetViewport::Execute(const std::vector<std::string>& params)
 {
 	if (params.size() < 4)
 		return false;
