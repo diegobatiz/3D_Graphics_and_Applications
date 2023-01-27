@@ -217,6 +217,7 @@
     <ClInclude Include="CommandDictionary.h" />
     <ClInclude Include="Graphics.h" />
     <ClInclude Include="Math\MathHelper.h" />
+    <ClInclude Include="Math\Matrix4.h" />
     <ClInclude Include="Math\Vector2.h" />
     <ClInclude Include="Math\Vector3.h" />
     <ClInclude Include="Math\Vertex.h" />
