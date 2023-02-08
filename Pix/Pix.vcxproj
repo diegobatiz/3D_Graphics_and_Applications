@@ -182,6 +182,11 @@
     <ClCompile Include="CmdPushRotationZ.cpp" />
     <ClCompile Include="CmdPushScaling.cpp" />
     <ClCompile Include="CmdPushTranslation.cpp" />
+    <ClCompile Include="CmdSetCameraDirection.cpp" />
+    <ClCompile Include="CmdSetCameraFar.cpp" />
+    <ClCompile Include="CmdSetCameraFOV.cpp" />
+    <ClCompile Include="CmdSetCameraNear.cpp" />
+    <ClCompile Include="CmdSetCameraPosition.cpp" />
     <ClCompile Include="CmdSetClipping.cpp" />
     <ClCompile Include="CmdSetColor.cpp" />
     <ClCompile Include="CmdSetFillMode.cpp" />
@@ -220,6 +225,11 @@
     <ClInclude Include="CmdPushRotationZ.h" />
     <ClInclude Include="CmdPushScaling.h" />
     <ClInclude Include="CmdPushTranslation.h" />
+    <ClInclude Include="CmdSetCameraDirection.h" />
+    <ClInclude Include="CmdSetCameraFar.h" />
+    <ClInclude Include="CmdSetCameraFOV.h" />
+    <ClInclude Include="CmdSetCameraNear.h" />
+    <ClInclude Include="CmdSetCameraPosition.h" />
     <ClInclude Include="CmdSetClipping.h" />
     <ClInclude Include="CmdSetColor.h" />
     <ClInclude Include="CmdSetFillMode.h" />
