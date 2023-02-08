@@ -10,7 +10,7 @@ public:
 
 	void OnNewFrame();
 
-	void PushTranslation(const Vector3 d);
+	void PushTranslation(const Vector3& d);
 	void PushRotationX(float radian);
 	void PushRotationY(float radian);
 	void PushRotationZ(float radian);

@@ -13,7 +13,7 @@ void MatrixStack::OnNewFrame()
 	mMatrices.clear();
 }
 
-void MatrixStack::PushTranslation(const Vector3 d)
+void MatrixStack::PushTranslation(const Vector3& d)
 {
 	Matrix4 translationMatrix = Matrix4::Translate(d);
 	mMatrices.push_back(translationMatrix);
