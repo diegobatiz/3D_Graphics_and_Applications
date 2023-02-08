@@ -10,10 +10,11 @@ PrimitivesManager* PrimitivesManager::Get()
 }
 
 
-bool PrimitivesManager::BeginDraw(Topology topology)
+bool PrimitivesManager::BeginDraw(Topology topology, bool applyTransform)
 {
 	mDrawBegin = true;
 	mTopology = topology;
+	mApplyTransform = false;
 	mVertexBuffer.clear();
 	return true;
 }

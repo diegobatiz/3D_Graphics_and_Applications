@@ -135,6 +135,9 @@
     <ClCompile Include="Camera.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="MatrixStack.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TextEditor.h">
@@ -219,6 +222,9 @@
       <Filter>Math</Filter>
     </ClInclude>
     <ClInclude Include="Camera.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="MatrixStack.h">
       <Filter>Graphics</Filter>
     </ClInclude>
   </ItemGroup>
