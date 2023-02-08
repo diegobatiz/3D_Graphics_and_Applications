@@ -11,7 +11,7 @@ public:
 	}
 	const char* GetDescription()
 	{
-		return "BeginDraw(topology) begins drawing a primitive";
+		return "BeginDraw(topology, applyTransform) begins drawing a primitive";
 	}
 
 	bool Execute(const std::vector<std::string>& params);
