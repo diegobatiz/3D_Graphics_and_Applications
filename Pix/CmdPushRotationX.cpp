@@ -9,9 +9,8 @@ bool CmdPushRotationX::Execute(const std::vector<std::string>& params)
 		return false;
 	}
 
-	auto vc = VariableCache::Get();
-	float radian = vc->GetFloat(params[0]);
+	auto degree = VariableCache::Get()->GetFloat(params[0]);
 
-	MatrixStack::Get()->PushRotationX(radian * 3.1416f / 180.0f);
+	MatrixStack::Get()->PushRotationX(degree * 3.1416f / 180.0f);
 	return true;
 }
