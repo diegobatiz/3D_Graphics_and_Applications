@@ -20,7 +20,7 @@ void LightManager::AddPointLight(const Vector3& position, float constant, float 
 {
 }
 
-void LightManager::AddSpotLight(const Vector3& position, const Vector3& direction, float constant, float linear, float quadratic, )
+void LightManager::AddSpotLight(const Vector3& position, const Vector3& direction, float constant, float linear, float quadratic, float decay)
 {
 }
 
