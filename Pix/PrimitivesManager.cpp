@@ -29,6 +29,11 @@ PrimitivesManager* PrimitivesManager::Get()
 	return &sInstance;
 }
 
+void PrimitivesManager::SetCullMode(Cullmode mode)
+{
+	mCullMode = mode;
+}
+
 
 bool PrimitivesManager::BeginDraw(Topology topology, bool applyTransform)
 {

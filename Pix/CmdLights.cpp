@@ -1,8 +1,8 @@
-#include "CmdSetCameraDirection.h"
+#include "CmdLights.h"
 #include "VariableCache.h"
 #include "Camera.h"
 
-bool CmdSetCameraDirection::Execute(const std::vector<std::string>& params)
+bool CmdSetLightAmbient::Execute(const std::vector<std::string>& params)
 {
 	if (params.size() < 3)
 	{

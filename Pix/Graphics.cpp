@@ -8,6 +8,7 @@
 #include "MatrixStack.h"
 #include "PrimitivesManager.h"
 #include "Viewport.h"
+#include "DepthBuffer.h"
 
 void Graphics::NewFrame()
 {
@@ -17,4 +18,5 @@ void Graphics::NewFrame()
 	MaterialManager::Get()->OnNewFrame();
 	MatrixStack::Get()->OnNewFrame();
 	Viewport::Get()->OnNewFrame();
+	DepthBuffer::Get()->OnNewFrame();
 }
