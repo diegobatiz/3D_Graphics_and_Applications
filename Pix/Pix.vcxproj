@@ -175,6 +175,7 @@
     <ClCompile Include="Clipper.cpp" />
     <ClCompile Include="CmdBeginDraw.cpp" />
     <ClCompile Include="CmdDrawPixel.cpp" />
+    <ClCompile Include="CmdEnableDepth.cpp" />
     <ClCompile Include="CmdEndDraw.cpp" />
     <ClCompile Include="CmdLights.cpp" />
     <ClCompile Include="CmdPopMatrix.cpp" />
@@ -190,6 +191,7 @@
     <ClCompile Include="CmdSetCameraPosition.cpp" />
     <ClCompile Include="CmdSetClipping.cpp" />
     <ClCompile Include="CmdSetColor.cpp" />
+    <ClCompile Include="CmdSetCullMode.cpp" />
     <ClCompile Include="CmdSetFillMode.cpp" />
     <ClCompile Include="CmdSetResolution.cpp" />
     <ClCompile Include="CmdSetViewport.cpp" />
@@ -223,6 +225,7 @@
     <ClInclude Include="Clipper.h" />
     <ClInclude Include="CmdBeginDraw.h" />
     <ClInclude Include="CmdDrawPixel.h" />
+    <ClInclude Include="CmdEnableDepth.h" />
     <ClInclude Include="CmdEndDraw.h" />
     <ClInclude Include="CmdLights.h" />
     <ClInclude Include="CmdPopMatrix.h" />
@@ -238,6 +241,7 @@
     <ClInclude Include="CmdSetCameraPosition.h" />
     <ClInclude Include="CmdSetClipping.h" />
     <ClInclude Include="CmdSetColor.h" />
+    <ClInclude Include="CmdSetCullMode.h" />
     <ClInclude Include="CmdSetFillMode.h" />
     <ClInclude Include="CmdSetResolution.h" />
     <ClInclude Include="CmdSetViewport.h" />
