@@ -201,6 +201,9 @@
     <ClCompile Include="PointLight.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="Model.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TextEditor.h">
@@ -351,6 +354,9 @@
       <Filter>Graphics</Filter>
     </ClInclude>
     <ClInclude Include="PointLight.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="Model.h">
       <Filter>Graphics</Filter>
     </ClInclude>
   </ItemGroup>

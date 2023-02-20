@@ -208,6 +208,7 @@
     <ClCompile Include="MaterialManager.cpp" />
     <ClCompile Include="Math\MathHelper.cpp" />
     <ClCompile Include="MatrixStack.cpp" />
+    <ClCompile Include="Model.cpp" />
     <ClCompile Include="PixEditor.cpp" />
     <ClCompile Include="PointLight.cpp" />
     <ClCompile Include="PrimitivesManager.cpp" />
@@ -266,6 +267,7 @@
     <ClInclude Include="Math\Vector3.h" />
     <ClInclude Include="Math\Vertex.h" />
     <ClInclude Include="MatrixStack.h" />
+    <ClInclude Include="Model.h" />
     <ClInclude Include="PixEditor.h" />
     <ClInclude Include="PointLight.h" />
     <ClInclude Include="PrimitivesManager.h" />
