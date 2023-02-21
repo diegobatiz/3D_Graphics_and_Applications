@@ -18,6 +18,13 @@ float $lightPosX = 1.5, 0.01
 float $lightPosY = 2, 0.01
 float $lightPosZ = 0, 0.01
 
+float $lDirX = 0, 0.01
+float $lDirY = -1, 0.01
+float $lDirZ = 0, 0.01
+
+float $lAngle = 35, 1, 10, 80
+float $lDecay = 10, 0.1, 0, 100
+
 float $rotX = 45, 0.1
 float $rotY = 45, 0.1
 float $rotZ = 45, 0.1
@@ -32,8 +39,7 @@ SetCameraDirection($camDirX, $camDirY, $camDirZ)
 SetLightAmbient(0.2, 0.2, 0.2)
 SetLightDiffuse(0.9, 0.9, 0.9)
 SetLightSpecular(0.3, 0.3, 0.3)
-AddPointLight($lightPosX, $lightPosY, $lightPosZ, $attenC, $attenL, $attenQ)
-
+AddSpotLight($lPosX, $lPosY, $lPosZ, $lDirX, $lDirY, $lDirZ, 1, 0.1, 0 ,$lAngle, $lDecay)
 
 BeginDraw(triangle, true)
 

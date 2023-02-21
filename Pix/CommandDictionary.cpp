@@ -31,6 +31,7 @@
 
 #include "CmdLights.h"
 #include "CmdMaterial.h"
+#include "CmdModel.h"
 
 
 CommandDictionary* CommandDictionary::Get()
@@ -89,6 +90,7 @@ CommandDictionary::CommandDictionary()
 	RegisterCommand<CmdEndDraw>();
 	RegisterCommand<CmdVertex>();
 	RegisterCommand<CmdSetCullMode>();
+	RegisterCommand<CmdModel>();
 }
 
 TextEditor::LanguageDefinition CommandDictionary::GenerateLanguageDefinition()
