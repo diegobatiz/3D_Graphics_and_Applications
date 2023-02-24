@@ -30,7 +30,7 @@ void Model::Load(const std::string& fileName)
 		if (strcmp(buffer, "v") == 0)
 		{
 			float x, y, z = 0.0f;
-			fscanf_s(file, "%f &f &f\n", &x, &y, &z);
+			fscanf_s(file, "%f %f %f\n", &x, &y, &z);
 			positions.push_back({ x, y, z });
 		}
 		else if (strcmp(buffer, "f") == 0)
