@@ -43,6 +43,7 @@ void LightManager::AddSpotLight(const Vector3& position, const Vector3& directio
 	light->SetPosition(position);
 	light->SetDirection(direction);
 	light->SetAttenuation(constant, linear, quadratic);
+	light->SetAngle(angle);
 	light->SetDecay(decay);
 	light->SetAmbient(mAmbient);
 	light->SetDiffuse(mDiffuse);
