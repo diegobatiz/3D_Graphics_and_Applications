@@ -1,5 +1,6 @@
 #include "Rasterizer.h"
 #include "DepthBuffer.h"
+#include "LightManager.h"
 
 Rasterizer* Rasterizer::Get()
 {
@@ -17,6 +18,16 @@ void Rasterizer::SetFillMode(FillMode fillMode)
 	mFillMode = fillMode;
 }
 
+void Rasterizer::SetShadeMode(ShadeMode shadeMode)
+{
+	mShadeMode = shadeMode;
+}
+
+ShadeMode Rasterizer::GetShadeMode()
+{
+	return mShadeMode;
+}
+
 void Rasterizer::DrawPoint(int x, int y)
 {
 	X::DrawPixel(x, y, mColor);
@@ -26,7 +37,12 @@ void Rasterizer::DrawPoint(const Vertex& vertex)
 {
 	if (DepthBuffer::Get()->CheckDepthBuffer(vertex.pos.x, vertex.pos.y, vertex.pos.z))
 	{
-		SetColor(vertex.color);
+		X::Color pixColor = vertex.color;
+		if (mShadeMode == ShadeMode::Phong)
+		{
+			pixColor *= LightManager::Get()->ComputeLightColor(vertex.pos, vertex.normal);
+		}
+		SetColor(pixColor);
 		DrawPoint(static_cast<int>(vertex.pos.x), static_cast<int>(vertex.pos.y));
 	}
 }
@@ -39,7 +55,14 @@ void DrawLineLow(const Vertex& left, const Vertex& right)
 	for (int x = startX; x < endX; ++x)
 	{
 		float t = static_cast<float>(x - startX) / dx;
-		Rasterizer::Get()->DrawPoint(LerpVertex(left, right, t));
+		if (Rasterizer::Get()->GetShadeMode() == ShadeMode::Phong)
+		{
+			Rasterizer::Get()->DrawPoint(LerpVertexAndNormal(left, right, t));
+		}
+		else
+		{
+			Rasterizer::Get()->DrawPoint(LerpVertex(left, right, t));
+		}
 	}
 }
 
@@ -51,7 +74,14 @@ void DrawLineHigh(const Vertex& bottom, const Vertex& top)
 	for (int y = startY; y < endY; ++y)
 	{
 		float t = static_cast<float>(y - startY) / dy;
-		Rasterizer::Get()->DrawPoint(LerpVertex(bottom, top, t));
+		if (Rasterizer::Get()->GetShadeMode() == ShadeMode::Phong)
+		{
+			Rasterizer::Get()->DrawPoint(LerpVertexAndNormal(bottom, top, t));
+		}
+		else
+		{
+			Rasterizer::Get()->DrawPoint(LerpVertex(bottom, top, t));
+		}
 	}
 }
 
@@ -98,8 +128,13 @@ void Rasterizer::DrawLine(const Vertex& a, const Vertex& b)
 	}
 }
 
-void Rasterizer::DrawTriangle(const Vertex& a, const Vertex& b, const Vertex& c)
+void Rasterizer::DrawTriangle(Vertex a, Vertex b, Vertex c)
 {
+	if (mShadeMode == ShadeMode::Flat)
+	{
+		b.color = a.color;
+		c.color = a.color;
+	}
 	switch (mFillMode)
 	{
 	case FillMode::Solid:

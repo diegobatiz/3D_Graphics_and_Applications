@@ -8,6 +8,7 @@
 #include "CmdEndDraw.h"
 #include "CmdVertex.h"
 #include "CmdSetFillMode.h"
+#include "CmdSetShadeMode.h"
 
 #include "CmdSetClipping.h"
 #include "CmdSetViewport.h"
@@ -84,6 +85,7 @@ CommandDictionary::CommandDictionary()
 	RegisterCommand<CmdDrawPixel>();
 	RegisterCommand<CmdSetColor>();
 	RegisterCommand<CmdSetFillMode>();
+	RegisterCommand<CmdSetShading>();
 
 	//Primitive Commands
 	RegisterCommand<CmdBeginDraw>();

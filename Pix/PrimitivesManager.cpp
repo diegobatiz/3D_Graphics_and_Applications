@@ -104,6 +104,7 @@ bool PrimitivesManager::EndDraw()
 		for (size_t i = 0; i < mVertexBuffer.size(); ++i)
 		{
 			mVertexBuffer[i].pos = MathHelper::TransformCoord(mVertexBuffer[i].pos, matFinal);
+			mVertexBuffer[i].normal = MathHelper::TransformNormal(mVertexBuffer[i].normal, matFinal);
 		}
 	}
 
@@ -134,18 +135,30 @@ bool PrimitivesManager::EndDraw()
 			
 			if (mApplyTransform)
 			{
-				Vector3 abDir = triangle[1].pos - triangle[0].pos;
-				Vector3 acDir = triangle[2].pos - triangle[0].pos;
-				Vector3 faceNorm = MathHelper::Normalize(MathHelper::Cross(abDir, acDir));
-
-				for (size_t v = 0; v < triangle.size(); ++v)
+				if (MathHelper::AreEqual(MathHelper::MagnitudeSquared(triangle[0].normal), 0.0f))
 				{
-					triangle[v].color *= LightManager::Get()->ComputeLightColor(triangle[v].pos, faceNorm);
+					Vector3 abDir = triangle[1].pos - triangle[0].pos;
+					Vector3 acDir = triangle[2].pos - triangle[0].pos;
+					Vector3 faceNorm = MathHelper::Normalize(MathHelper::Cross(abDir, acDir));
+
+					for (size_t v = 0; v < triangle.size(); ++v)
+					{
+						triangle[v].normal = faceNorm;
+					}
+				}
+
+				if (Rasterizer::Get()->GetShadeMode() != ShadeMode::Phong)
+				{
+					for (size_t v = 0; v < triangle.size(); ++v)
+					{
+						triangle[v].color *= LightManager::Get()->ComputeLightColor(triangle[v].pos, triangle[v].normal);
+					}
 				}
 
 				for (size_t v = 0; v < triangle.size(); ++v)
 				{
 					triangle[v].pos = MathHelper::TransformCoord(triangle[v].pos, matNDC);
+					triangle[v].normal = MathHelper::TransformNormal(triangle[v].normal, matNDC);
 				}
 
 				if (CullTriangle(mCullMode, triangle))
@@ -156,6 +169,7 @@ bool PrimitivesManager::EndDraw()
 				for (size_t v = 0; v < triangle.size(); ++v)
 				{
 					triangle[v].pos = MathHelper::TransformCoord(triangle[v].pos, matScreen);
+					triangle[v].normal = MathHelper::TransformNormal(triangle[v].normal, matScreen);
 				}
 			}
 
