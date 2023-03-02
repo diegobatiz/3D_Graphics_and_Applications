@@ -6,6 +6,7 @@
 struct Vertex
 {
 	Vector3 pos;
+	Vector3 posWorld;
 	Vector3 normal;
 	X::Color color;
 };
@@ -50,6 +51,7 @@ inline Vertex LerpVertexAndNormal(const Vertex& a, const Vertex& b, float t)
 {
 	Vertex ret;
 	ret.pos = LerpPosition(a.pos, b.pos, t);
+	ret.posWorld = LerpPosition(a.posWorld, b.posWorld, t);
 	ret.color = LerpColor(a.color, b.color, t);
 	ret.normal = LerpNormal(a.normal, b.normal, t);
 	return ret;

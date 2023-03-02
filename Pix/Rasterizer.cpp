@@ -40,7 +40,7 @@ void Rasterizer::DrawPoint(const Vertex& vertex)
 		X::Color pixColor = vertex.color;
 		if (mShadeMode == ShadeMode::Phong)
 		{
-			pixColor *= LightManager::Get()->ComputeLightColor(vertex.pos, vertex.normal);
+			pixColor *= LightManager::Get()->ComputeLightColor(vertex.posWorld, vertex.normal);
 		}
 		SetColor(pixColor);
 		DrawPoint(static_cast<int>(vertex.pos.x), static_cast<int>(vertex.pos.y));
@@ -52,7 +52,7 @@ void DrawLineLow(const Vertex& left, const Vertex& right)
 	float dx = right.pos.x - left.pos.x;
 	float startX = static_cast<int>(left.pos.x);
 	int endX = static_cast<int>(right.pos.x);
-	for (int x = startX; x < endX; ++x)
+	for (int x = startX; x <= endX; ++x)
 	{
 		float t = static_cast<float>(x - startX) / dx;
 		if (Rasterizer::Get()->GetShadeMode() == ShadeMode::Phong)
@@ -71,7 +71,7 @@ void DrawLineHigh(const Vertex& bottom, const Vertex& top)
 	float dy = top.pos.y - bottom.pos.y;
 	float startY = static_cast<int>(bottom.pos.y);
 	int endY = static_cast<int>(top.pos.y);
-	for (int y = startY; y < endY; ++y)
+	for (int y = startY; y <= endY; ++y)
 	{
 		float t = static_cast<float>(y - startY) / dy;
 		if (Rasterizer::Get()->GetShadeMode() == ShadeMode::Phong)
@@ -167,8 +167,8 @@ void Rasterizer::DrawFilledTriangle(const Vertex& v0, const Vertex& v1, const Ve
 		for (int y = startY; y <= endY; ++y)
 		{
 			float t = (y - v0.pos.y) / dy;
-			Vertex a = LerpVertex(v0, v2, t);
-			Vertex b = LerpVertex(v1, v2, t);
+			Vertex a = (mShadeMode == ShadeMode::Phong)? LerpVertexAndNormal(v0, v2, t) : LerpVertex(v0, v2, t);
+			Vertex b = (mShadeMode == ShadeMode::Phong)? LerpVertexAndNormal(v1, v2, t) : LerpVertex(v1, v2, t);
 			DrawLine(a, b);
 		}
 	}
@@ -179,15 +179,15 @@ void Rasterizer::DrawFilledTriangle(const Vertex& v0, const Vertex& v1, const Ve
 		for (int y = startY; y <= endY; ++y)
 		{
 			float t = (y - v0.pos.y) / dy;
-			Vertex a = LerpVertex(v0, v2, t);
-			Vertex b = LerpVertex(v0, v1, t);
+			Vertex a = (mShadeMode == ShadeMode::Phong)? LerpVertexAndNormal(v0, v2, t) : LerpVertex(v0, v2, t);
+			Vertex b = (mShadeMode == ShadeMode::Phong)? LerpVertexAndNormal(v0, v1, t) : LerpVertex(v0, v1, t);
 			DrawLine(a, b);
 		}
 	}
 	else
 	{
 		float t = (v1.pos.y - v0.pos.y) / dy;
-		Vertex splitVertex = LerpVertex(v0, v2, t);
+		Vertex splitVertex = (mShadeMode == ShadeMode::Phong) ? LerpVertexAndNormal(v0, v2, t) : LerpVertex(v0, v2, t);
 
 		DrawFilledTriangle(v0, v1, splitVertex);
 

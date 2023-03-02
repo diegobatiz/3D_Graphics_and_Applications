@@ -37,7 +37,7 @@ SetLightDiffuse(0.9, 0.0, 0.9)
 SetLightSpecular(0.3, 0.3, 0.3)
 AddSpotLight($lPosX, $lPosY, $lPosZ, $lDirX, $lDirY, $lDirZ, 1, 0.1, 0 ,$lAngle, $lDecay)
 
-SetShading(flat)
+SetShading(phong)
 
 BeginDraw(triangle, true)
 Model(../Models/plane_8x8.obj)
@@ -47,7 +47,7 @@ EndDraw()
 PushTranslation($lPosX, $lPosY, $lPosZ)
 PushScaling(0.1, 0.1, 0.1)
 
-SetShading(gauroud)
+SetShading(flat)
 BeginDraw(triangle, true)
 Model(../Models/cube.obj)
 EndDraw()
@@ -65,3 +65,7 @@ SetShading(phong)
 BeginDraw(triangle, true)
 Model(../Models/torus_knot.obj)
 EndDraw()
+
+
+
+

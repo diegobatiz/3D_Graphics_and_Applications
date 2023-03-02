@@ -104,6 +104,7 @@ bool PrimitivesManager::EndDraw()
 		for (size_t i = 0; i < mVertexBuffer.size(); ++i)
 		{
 			mVertexBuffer[i].pos = MathHelper::TransformCoord(mVertexBuffer[i].pos, matFinal);
+			mVertexBuffer[i].posWorld = mVertexBuffer[i].pos;
 			mVertexBuffer[i].normal = MathHelper::TransformNormal(mVertexBuffer[i].normal, matFinal);
 		}
 	}
@@ -158,7 +159,6 @@ bool PrimitivesManager::EndDraw()
 				for (size_t v = 0; v < triangle.size(); ++v)
 				{
 					triangle[v].pos = MathHelper::TransformCoord(triangle[v].pos, matNDC);
-					triangle[v].normal = MathHelper::TransformNormal(triangle[v].normal, matNDC);
 				}
 
 				if (CullTriangle(mCullMode, triangle))
@@ -169,7 +169,6 @@ bool PrimitivesManager::EndDraw()
 				for (size_t v = 0; v < triangle.size(); ++v)
 				{
 					triangle[v].pos = MathHelper::TransformCoord(triangle[v].pos, matScreen);
-					triangle[v].normal = MathHelper::TransformNormal(triangle[v].normal, matScreen);
 				}
 			}
 
