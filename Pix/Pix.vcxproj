@@ -221,6 +221,7 @@
     <ClCompile Include="ScriptParser.cpp" />
     <ClCompile Include="SpotLight.cpp" />
     <ClCompile Include="TextEditor.cpp" />
+    <ClCompile Include="Texture.cpp" />
     <ClCompile Include="VariableCache.cpp" />
     <ClCompile Include="Viewport.cpp" />
     <ClCompile Include="WinMain.cpp" />
@@ -286,6 +287,7 @@
     <ClInclude Include="ScriptParser.h" />
     <ClInclude Include="SpotLight.h" />
     <ClInclude Include="TextEditor.h" />
+    <ClInclude Include="Texture.h" />
     <ClInclude Include="VariableCache.h" />
     <ClInclude Include="Viewport.h" />
   </ItemGroup>

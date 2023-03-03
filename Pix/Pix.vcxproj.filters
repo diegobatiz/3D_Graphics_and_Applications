@@ -222,6 +222,9 @@
     <ClCompile Include="CmdSetTexture.cpp">
       <Filter>Commands</Filter>
     </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TextEditor.h">
@@ -394,6 +397,9 @@
     </ClInclude>
     <ClInclude Include="CmdSetTexture.h">
       <Filter>Commands</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Graphics</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -24,6 +24,16 @@ namespace
 		uint32_t numColors;				//number of colors
 		uint32_t importantColors;		//important colors
 	};
+
+	uint32_t MakeStringAligned(uint32_t rowStride, uint32_t alignStride)
+	{
+		uint32_t newStride = rowStride;
+		while (newStride % alignStride != 0)
+		{
+			newStride++;
+		}
+		return newStride;
+	}
 #pragma pack(pop)
 }
 
@@ -37,6 +47,42 @@ void Texture::Load(const std::string& fileName)
 	{
 		return;
 	}
+
+	BitMapFileHeader fileHeader;
+	BitMapInfoHeader infoHeader;
+	fread(&fileHeader, sizeof(fileHeader), 1, file);
+	fread(&infoHeader, sizeof(infoHeader), 1, file);
+
+	if (infoHeader.bits != 24)
+	{
+		fclose(file);
+		return;
+	}
+
+	mWidth = infoHeader.width;
+	mHeight = infoHeader.height;
+	mPixels = std::make_unique<X::Color[]>(mWidth * mHeight);
+
+	fseek(file, fileHeader.offset, SEEK_SET);
+	uint32_t rowStride = mWidth * infoHeader.bits / 8;
+	uint32_t paddedStride = MakeStringAligned(rowStride, 4);
+	std::vector<uint8_t> paddBytes(paddedStride - rowStride);
+	for (int h = 0; h < mHeight; ++h)
+	{
+		for (int w = 0; w < mWidth; ++w)
+		{
+			uint8_t r, g, b;
+			fread(&b, sizeof(uint8_t), 1, file);
+			fread(&g, sizeof(uint8_t), 1, file);
+			fread(&r, sizeof(uint8_t), 1, file);
+			uint32_t index = w + ((mHeight - h - 1) * mWidth);
+			mPixels[index] = { r / 255.0f, g / 255.0f , b / 255.0f, 1.0f };
+		}
+
+		fread((char*)paddBytes.data(), paddBytes.size(), 1, file);
+	}
+
+	fclose(file);
 }
 
 const std::string& Texture::GetFileName() const
