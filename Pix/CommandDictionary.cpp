@@ -3,6 +3,7 @@
 #include "CmdDrawPixel.h"
 #include "CmdSetResolution.h"
 #include "CmdVarFloat.h"
+#include "CmdVarBool.h"
 #include "CmdSetColor.h"
 #include "CmdBeginDraw.h"  
 #include "CmdEndDraw.h"
@@ -33,6 +34,7 @@
 #include "CmdLights.h"
 #include "CmdMaterial.h"
 #include "CmdModel.h"
+#include "CmdSetTexture.h"
 
 
 CommandDictionary* CommandDictionary::Get()
@@ -54,6 +56,7 @@ CommandDictionary::CommandDictionary()
 
 	// Variable commands
 	RegisterCommand<CmdVarFloat>();
+	RegisterCommand<CmdVarBool>();
 	RegisterCommand<CmdPushTranslation>();
 	RegisterCommand<CmdPushRotationX>();
 	RegisterCommand<CmdPushRotationY>();
@@ -86,6 +89,7 @@ CommandDictionary::CommandDictionary()
 	RegisterCommand<CmdSetColor>();
 	RegisterCommand<CmdSetFillMode>();
 	RegisterCommand<CmdSetShading>();
+	RegisterCommand<CmdSetTexture>();
 
 	//Primitive Commands
 	RegisterCommand<CmdBeginDraw>();
