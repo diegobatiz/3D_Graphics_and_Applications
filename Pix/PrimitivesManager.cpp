@@ -62,6 +62,11 @@ void PrimitivesManager::SetCullMode(Cullmode mode)
 	mCullMode = mode;
 }
 
+void PrimitivesManager::SetCorrectUV(bool correct)
+{
+	mCorrectUv = correct;
+}
+
 
 bool PrimitivesManager::BeginDraw(Topology topology, bool applyTransform)
 {
