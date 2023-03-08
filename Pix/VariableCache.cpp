@@ -16,7 +16,6 @@ struct FloatVar : public Variable
 	{
 		ImGui::DragFloat(name.c_str(), &value, speed, min, max);
 	}
-	std::string name;
 	float value = 0.0f;
 	float speed = 1.0f;
 	float min = 0.0f;

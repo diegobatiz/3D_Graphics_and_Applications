@@ -1,5 +1,5 @@
 #include "CmdSetTexture.h"
-//#include "ModelCache.h"
+#include "TextureCache.h"
 
 bool CmdSetTexture::Execute(const std::vector<std::string>& params)
 {
@@ -8,7 +8,7 @@ bool CmdSetTexture::Execute(const std::vector<std::string>& params)
 		return false;
 	}
 
-	//add texture to cache
+	TextureCache::Get()->SetTexture(params[0]);
 	return true;
 }
 

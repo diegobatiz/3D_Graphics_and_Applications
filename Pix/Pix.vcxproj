@@ -186,6 +186,7 @@
     <ClCompile Include="CmdPushRotationZ.cpp" />
     <ClCompile Include="CmdPushScaling.cpp" />
     <ClCompile Include="CmdPushTranslation.cpp" />
+    <ClCompile Include="CmdSetAddressMode.cpp" />
     <ClCompile Include="CmdSetCameraDirection.cpp" />
     <ClCompile Include="CmdSetCameraFar.cpp" />
     <ClCompile Include="CmdSetCameraFOV.cpp" />
@@ -222,6 +223,7 @@
     <ClCompile Include="SpotLight.cpp" />
     <ClCompile Include="TextEditor.cpp" />
     <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="TextureCache.cpp" />
     <ClCompile Include="VariableCache.cpp" />
     <ClCompile Include="Viewport.cpp" />
     <ClCompile Include="WinMain.cpp" />
@@ -247,6 +249,7 @@
     <ClInclude Include="CmdPushRotationZ.h" />
     <ClInclude Include="CmdPushScaling.h" />
     <ClInclude Include="CmdPushTranslation.h" />
+    <ClInclude Include="CmdSetAddressMode.h" />
     <ClInclude Include="CmdSetCameraDirection.h" />
     <ClInclude Include="CmdSetCameraFar.h" />
     <ClInclude Include="CmdSetCameraFOV.h" />
@@ -288,6 +291,7 @@
     <ClInclude Include="SpotLight.h" />
     <ClInclude Include="TextEditor.h" />
     <ClInclude Include="Texture.h" />
+    <ClInclude Include="TextureCache.h" />
     <ClInclude Include="VariableCache.h" />
     <ClInclude Include="Viewport.h" />
   </ItemGroup>

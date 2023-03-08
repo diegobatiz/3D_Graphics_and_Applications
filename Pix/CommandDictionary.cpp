@@ -35,6 +35,7 @@
 #include "CmdMaterial.h"
 #include "CmdModel.h"
 #include "CmdSetTexture.h"
+#include "CmdSetAddressMode.h"
 
 
 CommandDictionary* CommandDictionary::Get()
@@ -90,6 +91,7 @@ CommandDictionary::CommandDictionary()
 	RegisterCommand<CmdSetFillMode>();
 	RegisterCommand<CmdSetShading>();
 	RegisterCommand<CmdSetTexture>();
+	RegisterCommand<CmdSetAddressMode>();
 
 	//Primitive Commands
 	RegisterCommand<CmdBeginDraw>();

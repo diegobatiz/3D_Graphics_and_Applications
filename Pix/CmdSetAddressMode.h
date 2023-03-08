@@ -2,17 +2,17 @@
 #include "Command.h"
 
 
-class CmdSetTexture : public Command
+class CmdSetAddressMode : public Command
 {
 public:
 	const char* GetName() override
 	{
-		return "SetTexture";
+		return "SetAddressMode";
 	}
 
 	const char* GetDescription() override
 	{
-		return "SetTexture(filename)";
+		return "SetAddressMode(addressMode) sets the texture address mode";
 	}
 
 	bool Execute(const std::vector<std::string>& params);

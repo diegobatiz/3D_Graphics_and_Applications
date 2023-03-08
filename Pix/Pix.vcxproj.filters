@@ -225,6 +225,12 @@
     <ClCompile Include="Texture.cpp">
       <Filter>Graphics</Filter>
     </ClCompile>
+    <ClCompile Include="TextureCache.cpp">
+      <Filter>Graphics</Filter>
+    </ClCompile>
+    <ClCompile Include="CmdSetAddressMode.cpp">
+      <Filter>Commands</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="TextEditor.h">
@@ -400,6 +406,12 @@
     </ClInclude>
     <ClInclude Include="Texture.h">
       <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="TextureCache.h">
+      <Filter>Graphics</Filter>
+    </ClInclude>
+    <ClInclude Include="CmdSetAddressMode.h">
+      <Filter>Commands</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
