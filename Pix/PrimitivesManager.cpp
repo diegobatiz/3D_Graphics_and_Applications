@@ -161,6 +161,17 @@ bool PrimitivesManager::EndDraw()
 					}
 				}
 
+				if (mCorrectUv && triangle[0].color.z < 0.0f)
+				{
+					for (auto& v : triangle)
+					{
+						Vector3 viewPos = MathHelper::TransformCoord(v.pos, matView);
+						v.color.x /= viewPos.z;
+						v.color.y /= viewPos.z;
+						v.color.w = 1.0f / viewPos.z;
+					}
+				}
+
 				for (size_t v = 0; v < triangle.size(); ++v)
 				{
 					triangle[v].pos = MathHelper::TransformCoord(triangle[v].pos, matNDC);

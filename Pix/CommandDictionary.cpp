@@ -10,32 +10,28 @@
 #include "CmdVertex.h"
 #include "CmdSetFillMode.h"
 #include "CmdSetShadeMode.h"
-
 #include "CmdSetClipping.h"
 #include "CmdSetViewport.h"
 #include "CmdShowViewport.h"
-
 #include "CmdPushTranslation.h"
 #include "CmdPushRotationX.h"
 #include "CmdPushRotationY.h"
 #include "CmdPushRotationZ.h"
 #include "CmdPushScaling.h"
 #include "CmdPopMatrix.h"
-
 #include "CmdSetCameraDirection.h"
 #include "CmdSetCameraPosition.h"
 #include "CmdSetCameraNear.h"
 #include "CmdSetCameraFar.h"
 #include "CmdSetCameraFOV.h"
-
 #include "CmdSetCullMode.h"
 #include "CmdEnableDepth.h"
-
 #include "CmdLights.h"
 #include "CmdMaterial.h"
 #include "CmdModel.h"
 #include "CmdSetTexture.h"
 #include "CmdSetAddressMode.h"
+#include "CmdSetCorrectUV.h"
 
 
 CommandDictionary* CommandDictionary::Get()
@@ -98,6 +94,7 @@ CommandDictionary::CommandDictionary()
 	RegisterCommand<CmdEndDraw>();
 	RegisterCommand<CmdVertex>();
 	RegisterCommand<CmdSetCullMode>();
+	RegisterCommand<CmdSetCorrectUV>();
 	RegisterCommand<CmdModel>();
 }
 
