@@ -153,7 +153,7 @@ bool PrimitivesManager::EndDraw()
 					}
 				}
 
-				if (Rasterizer::Get()->GetShadeMode() != ShadeMode::Phong)
+				if (Rasterizer::Get()->GetShadeMode() != ShadeMode::Phong && triangle[0].color.z >= 0)
 				{
 					for (size_t v = 0; v < triangle.size(); ++v)
 					{

@@ -38,8 +38,12 @@ void Rasterizer::DrawPoint(const Vertex& vertex)
 {
 	if (DepthBuffer::Get()->CheckDepthBuffer(vertex.pos.x, vertex.pos.y, vertex.pos.z))
 	{
-		X::Color pixColor = TextureCache::Get()->SampleColor(vertex.color);
-		if (mShadeMode == ShadeMode::Phong)
+		X::Color pixColor = vertex.color;
+		if (pixColor.z < 0.0f)
+		{
+			pixColor = TextureCache::Get()->SampleColor(vertex.color);
+		}
+		else if (mShadeMode == ShadeMode::Phong)
 		{
 			pixColor *= LightManager::Get()->ComputeLightColor(vertex.posWorld, vertex.normal);
 		}
